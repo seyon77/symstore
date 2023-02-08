@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symstore : les Produits {% endblock %}
+
+{% block body %}
+    <h1 class="text-center bg-primary text-light mt-3">les Produits</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+        <th scope="col">Categorie</th>
+        <th scope="col">prix</th>
+        <th colspan="3"class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%if produits is not empty %}
+    {% for prod in produits %}
+     <tr>
+        <th scope="row">{{prod.id}}</th>
+        <td>{{prod.nom}}</td>
+        <td>{{prod.description}}</td>
+        <td>{{prod.categorie.nom}}</td>
+        <td>{{prod.prix}}</td>
+        <td><a href="" class ="btn btn-success">Ajouter au panier</a></td>
+        <td><a href="{{path('blog_edit_prod',{id:prod.id})}}" class ="btn btn-warning">modifier</a></td>
+        <td><a href="" class ="btn btn-danger">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+    <h3>Aucun produits disponible</h3>
+    {% endif %}
+    <a href="{{path('app_home')}}" class="btn btn-primary">Retour Acceuil</a>
+     <a href="{{path('blog_new_prod')}}" class="btn btn-success">Crée un Produit</a>
+    {% endblock %}

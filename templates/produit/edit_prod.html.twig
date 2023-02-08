@@ -1,0 +1,34 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}Symblog : Edit Produit {% endblock %}
+
+{% block body %}
+
+<H1 class="bg-primary text-center text-white mb-2">
+{% if mode %}
+Modification Produit
+{% else %}
+Creation produit
+{% endif  %}
+</H1>
+{{ form_start(prodForm)}}
+{{form_row(prodForm.nom)}}
+{{form_row(prodForm.description)}}
+{{form_row(prodForm.prix)}}
+{{form_row(prodForm.categorie)}}
+
+<button type "submit" class="btn btn-success">
+{% if mode %}
+Enregistrer les modifications
+{% else %}
+crée le produit
+{% endif  %}
+</button>
+
+<a href="{{path('produit_index')}}" class="btn btn-primary">Retour aux Articles</a>
+
+{{form_end(prodForm)}}
+
+
+
+{% endblock %}
